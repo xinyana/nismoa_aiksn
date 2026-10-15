@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | อิกษณา เหมือนแย้ม (Aiksana Mueamyaem)</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Prompt & ITIM (สำหรับความน่ารัก สไตล์การ์ตูน Winx) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Config Custom Colors & Fonts for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        winxPink: '#FF66C4',
+                        winxMagenta: '#D946EF',
+                        winxPurple: '#8B5CF6',
+                        winxCyan: '#06B6D4',
+                        winxYellow: '#FACC15',
+                        winxLime: '#84CC16',
+                        magicDark: '#12072B'
+                    },
+                    fontFamily: {
+                        prompt: ['Prompt', 'sans-serif'],
+                        itim: ['Itim', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background: linear-gradient(135deg, #2a085c 0%, #4c1d95 35%, #831843 70%, #1e1b4b 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Sparkle & Magic Animations */
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.3) rotate(180deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 102, 196, 0.6), 0 0 40px rgba(139, 92, 246, 0.4); }
+            50% { box-shadow: 0 0 35px rgba(255, 102, 196, 0.9), 0 0 60px rgba(6, 182, 212, 0.7); }
+        }
+
+        .animate-sparkle {
+            animation: sparkle 3s infinite ease-in-out;
+        }
+
+        .animate-float {
+            animation: float 4s infinite ease-in-out;
+        }
+
+        .winx-glow {
+            animation: pulseGlow 3.5s infinite alternate;
+        }
+
+        /* Custom Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .glass-card-pink {
+            background: rgba(255, 102, 196, 0.15);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 102, 196, 0.4);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #12072B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#FF66C4, #8B5CF6);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen text-slate-100 selection:bg-winxPink selection:text-white pb-16">
+
+    <!-- Background Magic Floating Particles -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <i class="fa-solid fa-sparkles text-winxYellow text-3xl absolute top-10 left-10 animate-sparkle"></i>
+        <i class="fa-solid fa-star text-winxPink text-2xl absolute top-1/4 right-12 animate-sparkle" style="animation-delay: 1s;"></i>
+        <i class="fa-solid fa-wand-magic-sparkles text-winxCyan text-4xl absolute bottom-1/3 left-12 animate-sparkle" style="animation-delay: 1.5s;"></i>
+        <i class="fa-solid fa-heart text-pink-400 text-2xl absolute bottom-10 right-1/4 animate-sparkle" style="animation-delay: 2s;"></i>
+        
+        <!-- Fairy Glowing Aura Bubbles -->
+        <div class="absolute -top-20 -left-20 w-96 h-96 bg-winxPink/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/2 -right-20 w-96 h-96 bg-winxPurple/30 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-20 left-1/3 w-96 h-96 bg-winxCyan/20 rounded-full blur-3xl pointer-events-none"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-purple-950/70 border-b border-pink-500/30">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2.5">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-winxPink to-winxYellow flex items-center justify-center text-purple-950 text-xl font-bold shadow-lg">
+                    <i class="fa-solid fa-butterfly"></i>
+                </div>
+                <span class="font-itim text-2xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-200 to-cyan-300 font-bold">
+                    WINX PORTFOLIO
+                </span>
+            </div>
+            
+            <!-- Desktop Nav Link -->
+            <nav class="hidden md:flex items-center gap-6 font-medium text-sm">
+                <a href="#about" class="hover:text-winxPink transition-colors flex items-center gap-1.5"><i class="fa-solid fa-user-sparkles text-xs text-winxYellow"></i> ข้อมูลส่วนตัว</a>
+                <a href="#education" class="hover:text-winxPink transition-colors flex items-center gap-1.5"><i class="fa-solid fa-graduation-cap text-xs text-winxCyan"></i> การศึกษา</a>
+                <a href="#skills" class="hover:text-winxPink transition-colors flex items-center gap-1.5"><i class="fa-solid fa-wand-magic-sparkles text-xs text-winxPink"></i> ความสามารถ</a>
+                <a href="#hobbies" class="hover:text-winxPink transition-colors flex items-center gap-1.5"><i class="fa-solid fa-heart text-xs text-pink-400"></i> งานอดิเรก</a>
+                <a href="#contact" class="px-5 py-2 rounded-full bg-gradient-to-r from-winxPink to-winxPurple hover:opacity-90 transition-all font-semibold shadow-md flex items-center gap-1.5"><i class="fa-solid fa-paper-plane text-xs"></i> ติดต่อ</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-2xl text-pink-300 hover:text-white focus:outline-none p-1">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-purple-950/95 border-b border-pink-500/30 px-6 py-4 flex flex-col gap-3 text-center">
+            <a href="#about" class="hover:text-winxPink transition-colors py-1">ข้อมูลส่วนตัว</a>
+            <a href="#education" class="hover:text-winxPink transition-colors py-1">การศึกษา</a>
+            <a href="#skills" class="hover:text-winxPink transition-colors py-1">ความสามารถพิเศษ</a>
+            <a href="#hobbies" class="hover:text-winxPink transition-colors py-1">งานอดิเรก</a>
+            <a href="#contact" class="hover:text-winxPink transition-colors py-1">ช่องทางติดต่อ</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-5xl mx-auto px-4 pt-8 relative z-10 space-y-12">
+
+        <!-- Hero & Profile Section -->
+        <section id="about" class="pt-4 scroll-mt-20">
+            <div class="glass-card rounded-3xl p-6 md:p-10 winx-glow relative overflow-hidden">
+                
+                <!-- Winx Wings Watermark Pattern Background -->
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                    <i class="fa-solid fa-butterfly text-[260px] text-pink-300"></i>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Profile Picture Column -->
+                    <div class="md:col-span-5 flex flex-col items-center justify-center">
+                        <div class="relative group">
+                            <!-- Magic Glowing Border Frame -->
+                            <div class="absolute -inset-1.5 bg-gradient-to-r from-winxPink via-winxYellow to-winxCyan rounded-full blur opacity-80 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                            
+                            <!-- Profile Image Container -->
+                            <div class="relative w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white/80 shadow-2xl bg-purple-900">
+                                <img src="https://placehold.co/400x400/8B5CF6/ffffff?text=Aiksana+Image" 
+                                     alt="น.ส. อิกษณา เหมือนแย้ม" 
+                                     id="profileImage"
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                     onerror="this.src='https://placehold.co/400x400/FF66C4/ffffff?text=Aiksana+M.'">
+                            </div>
+
+                            <!-- Decorative Sparkle Crown Badge -->
+                            <div class="absolute bottom-2 right-2 bg-gradient-to-r from-pink-500 to-purple-600 border-2 border-white text-white p-3 rounded-full shadow-lg animate-float">
+                                <i class="fa-solid fa-crown text-xl text-winxYellow"></i>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold bg-winxPink/30 border border-winxPink/60 text-pink-200 uppercase tracking-widest shadow-inner">
+                                ✨ Magic Fairy Student
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Personal Information Bio Column -->
+                    <div class="md:col-span-7 space-y-4 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/20 border border-yellow-300/40 text-yellow-200 text-sm font-itim">
+                            <i class="fa-solid fa-sparkles text-winxYellow"></i> Welcome to My Magical Portfolio
+                        </div>
+                        
+                        <h1 class="text-3xl md:text-5xl font-bold font-itim tracking-wide text-white">
+                            น.ส. อิกษณา เหมือนแย้ม
+                        </h1>
+                        <p class="text-pink-300 font-medium text-lg md:text-xl font-itim">
+                            (Aiksana Mueamyaem)
+                        </p>
+
+                        <div class="h-1 w-24 bg-gradient-to-r from-winxPink via-purple-400 to-winxCyan rounded-full mx-auto md:mx-0 my-2"></div>
+
+                        <!-- Personal Details Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-sm md:text-base">
+                            <div class="bg-white/10 p-3 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-pink-500/30 flex items-center justify-center text-winxPink text-lg shrink-0">
+                                    <i class="fa-solid fa-cake-candles"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="text-xs text-slate-300">วันเกิด</p>
+                                    <p class="font-semibold text-pink-100">29 พฤศจิกายน 2006</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/10 p-3 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-purple-500/30 flex items-center justify-center text-purple-300 text-lg shrink-0">
+                                    <i class="fa-solid fa-venus"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="text-xs text-slate-300">เพศ</p>
+                                    <p class="font-semibold text-purple-100">หญิง</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/10 p-3 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-cyan-500/30 flex items-center justify-center text-winxCyan text-lg shrink-0">
+                                    <i class="fa-solid fa-flag"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="text-xs text-slate-300">สัญชาติ / ศาสนา</p>
+                                    <p class="font-semibold text-cyan-100">ไทย / พุทธ</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/10 p-3 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-yellow-500/30 flex items-center justify-center text-winxYellow text-lg shrink-0">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="text-xs text-slate-300">บิดา / มารดา</p>
+                                    <p class="font-semibold text-yellow-100 text-xs sm:text-sm">นายกฤษณะ / นางสาวบุณยวีร์</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education History Section -->
+        <section id="education" class="scroll-mt-20">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl font-bold font-itim text-transparent bg-clip-text bg-gradient-to-r from-winxPink via-winxYellow to-winxCyan inline-block">
+                    <i class="fa-solid fa-graduation-cap text-winxPink mr-1"></i> ประวัติการศึกษา (Education)
+                </h2>
+                <p class="text-sm text-slate-300 mt-1">เส้นทางการเรียนรู้และพัฒนาตนเอง</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Primary School -->
+                <div class="glass-card rounded-3xl p-6 relative hover:scale-[1.02] transition-transform duration-300 border-l-4 border-l-yellow-400">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-yellow-400/20 border border-yellow-400/40 flex items-center justify-center text-yellow-300 text-xl font-bold shrink-0">
+                                <i class="fa-solid fa-school"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-yellow-200 font-itim">ประถมศึกษา</h3>
+                                <p class="text-slate-200 font-medium text-sm md:text-base">โรงเรียนวัดบ้านหลวง</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-yellow-400/20 text-yellow-200 text-xs rounded-full font-semibold border border-yellow-400/30 whitespace-nowrap">
+                            2556 - 2561
+                        </span>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-sm">
+                        <span class="text-slate-300">เกรดเฉลี่ยสะสม (GPAX)</span>
+                        <span class="font-bold text-winxYellow text-lg bg-yellow-950/60 px-3 py-0.5 rounded-xl border border-yellow-400/40">3.76</span>
+                    </div>
+                </div>
+
+                <!-- Junior High School -->
+                <div class="glass-card rounded-3xl p-6 relative hover:scale-[1.02] transition-transform duration-300 border-l-4 border-l-emerald-400">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-400/20 border border-emerald-400/40 flex items-center justify-center text-emerald-300 text-xl font-bold shrink-0">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-emerald-200 font-itim">มัธยมศึกษาตอนต้น</h3>
+                                <p class="text-slate-200 font-medium text-sm md:text-base">โรงเรียนบ้านหลวงวิทยา</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-400/20 text-emerald-200 text-xs rounded-full font-semibold border border-emerald-400/30 whitespace-nowrap">
+                            2562 - 2564
+                        </span>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-sm">
+                        <span class="text-slate-300">เกรดเฉลี่ยสะสม (GPAX)</span>
+                        <span class="font-bold text-emerald-300 text-lg bg-emerald-950/60 px-3 py-0.5 rounded-xl border border-emerald-400/40">3.98</span>
+                    </div>
+                </div>
+
+                <!-- Senior High School -->
+                <div class="glass-card rounded-3xl p-6 relative hover:scale-[1.02] transition-transform duration-300 border-l-4 border-l-winxPink">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-pink-400/20 border border-pink-400/40 flex items-center justify-center text-pink-300 text-xl font-bold shrink-0">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-pink-200 font-itim">มัธยมศึกษาตอนปลาย</h3>
+                                <p class="text-slate-200 font-medium text-sm md:text-base">โรงเรียนบ้านหลวงวิทยา</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-pink-400/20 text-pink-200 text-xs rounded-full font-semibold border border-pink-400/30 whitespace-nowrap">
+                            2565 - 2567
+                        </span>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-sm">
+                        <span class="text-slate-300">เกรดเฉลี่ยสะสม (GPAX)</span>
+                        <span class="font-bold text-pink-300 text-lg bg-pink-950/60 px-3 py-0.5 rounded-xl border border-pink-400/40">3.99</span>
+                    </div>
+                </div>
+
+                <!-- Bachelor Degree -->
+                <div class="glass-card rounded-3xl p-6 relative hover:scale-[1.02] transition-transform duration-300 border-l-4 border-l-winxCyan">
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-cyan-400/20 border border-cyan-400/40 flex items-center justify-center text-cyan-300 text-xl font-bold shrink-0">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-cyan-200 font-itim">ปริญญาตรี</h3>
+                                <p class="text-slate-200 font-medium text-sm md:text-base">วิทยาลัยสาธารณสุขสิรินธร จังหวัดขอนแก่น</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-cyan-400/20 text-cyan-200 text-xs rounded-full font-semibold border border-cyan-400/30 whitespace-nowrap">
+                            2569 - ปัจจุบัน
+                        </span>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-sm">
+                        <span class="text-slate-300">สถานะการศึกษา</span>
+                        <span class="font-bold text-cyan-300 text-xs sm:text-sm bg-cyan-950/60 px-3 py-1 rounded-xl border border-cyan-400/40 flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping inline-block"></span> กำลังศึกษา
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills & Hobbies Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Special Abilities -->
+            <section id="skills" class="scroll-mt-20">
+                <div class="glass-card-pink rounded-3xl p-6 md:p-8 h-full relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-2xl bg-winxPink flex items-center justify-center text-white text-xl shadow-lg">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold font-itim text-pink-200">ความสามารถพิเศษ</h2>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-white/10 p-4 rounded-2xl border border-pink-300/30 flex items-start gap-4 hover:bg-white/20 transition-all">
+                                <div class="text-winxYellow text-2xl pt-1 shrink-0">
+                                    <i class="fa-solid fa-pen-nib"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-pink-100 text-base font-itim">แต่งนิยายและเขียนบทละคร</h3>
+                                    <p class="text-xs text-slate-200 mt-1 leading-relaxed">มีความคิดสร้างสรรค์ ถ่ายทอดเรื่องราว อารมณ์ และจินตนาการผ่านตัวอักษรได้อย่างสละสลวย</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white/10 p-4 rounded-2xl border border-pink-300/30 flex items-start gap-4 hover:bg-white/20 transition-all">
+                                <div class="text-winxCyan text-2xl pt-1 shrink-0">
+                                    <i class="fa-solid fa-microphone-lines"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-pink-100 text-base font-itim">พิธีกรดำเนินรายการ</h3>
+                                    <p class="text-xs text-slate-200 mt-1 leading-relaxed">เป็นพิธีกรในงานต่างๆ ของทางโรงเรียน มีทักษะการพูด การสื่อสารในที่สาธารณะ และแก้ไขปัญหาเฉพาะหน้าได้ดี</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-pink-300/20 text-center">
+                        <span class="text-xs text-pink-200 italic font-itim">✨ Magic Power: Communication & Creative Storytelling</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hobbies & Activities -->
+            <section id="hobbies" class="scroll-mt-20">
+                <div class="glass-card rounded-3xl p-6 md:p-8 h-full relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-2xl bg-winxPurple flex items-center justify-center text-white text-xl shadow-lg">
+                                <i class="fa-solid fa-icons"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold font-itim text-purple-200">งานอดิเรก (Hobbies)</h2>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3.5">
+                            
+                            <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-center hover:bg-white/10 transition-all group">
+                                <div class="w-12 h-12 mx-auto rounded-full bg-pink-500/20 text-winxPink flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-book-bookmark"></i>
+                                </div>
+                                <h3 class="font-semibold text-sm text-pink-100 font-itim">อ่านหนังสือ</h3>
+                                <p class="text-[11px] text-slate-300 mt-1">เพิ่มพูนความรู้และแรงบันดาลใจ</p>
+                            </div>
+
+                            <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-center hover:bg-white/10 transition-all group">
+                                <div class="w-12 h-12 mx-auto rounded-full bg-purple-500/20 text-purple-300 flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-feather-pointed"></i>
+                                </div>
+                                <h3 class="font-semibold text-sm text-purple-100 font-itim">แต่งนิยาย</h3>
+                                <p class="text-[11px] text-slate-300 mt-1">สร้างสรรค์โลกแห่งจินตนาการ</p>
+                            </div>
+
+                            <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-center hover:bg-white/10 transition-all group">
+                                <div class="w-12 h-12 mx-auto rounded-full bg-yellow-500/20 text-winxYellow flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-cookie-bite"></i>
+                                </div>
+                                <h3 class="font-semibold text-sm text-yellow-100 font-itim">ทำขนม</h3>
+                                <p class="text-[11px] text-slate-300 mt-1">ฝึกสมาธิและความพิถีพิถัน</p>
+                            </div>
+
+                            <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-center hover:bg-white/10 transition-all group">
+                                <div class="w-12 h-12 mx-auto rounded-full bg-cyan-500/20 text-winxCyan flex items-center justify-center text-2xl mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-puzzle-piece"></i>
+                                </div>
+                                <h3 class="font-semibold text-sm text-cyan-100 font-itim">ต่อจิ๊กซอว์</h3>
+                                <p class="text-[11px] text-slate-300 mt-1">การฝึกความอดทนและการสังเกต</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-white/10 text-center">
+                        <span class="text-xs text-purple-200 italic font-itim">✨ Passion for Creativity & Focus</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Contact Section -->
+        <section id="contact" class="scroll-mt-20">
+            <div class="glass-card rounded-3xl p-6 md:p-10 text-center relative overflow-hidden">
+                <div class="max-w-2xl mx-auto space-y-6">
+                    <div>
+                        <span class="px-4 py-1 rounded-full bg-winxPink/30 border border-winxPink text-pink-200 text-xs font-semibold uppercase tracking-widest">
+                            Magic Contact
+                        </span>
+                        <h2 class="text-3xl font-bold font-itim text-white mt-2">ช่องทางติดต่อ (Contact Me)</h2>
+                        <p class="text-sm text-slate-300 mt-1">สามารถติดต่อหรือสอบถามข้อมูลเพิ่มเติมได้ตามช่องทางด้านล่างนี้</p>
+                    </div>
+
+                    <!-- Contact Details Badges -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                        
+                        <!-- Phone -->
+                        <div class="bg-white/10 p-4 rounded-2xl border border-white/15 flex items-center gap-4 hover:bg-white/15 transition-all">
+                            <div class="w-12 h-12 rounded-2xl bg-winxPink/40 text-white flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-xs text-pink-200 font-medium">เบอร์โทรศัพท์</p>
+                                <p class="font-bold text-white text-base">094-647-6124</p>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="bg-white/10 p-4 rounded-2xl border border-white/15 flex items-center gap-4 hover:bg-white/15 transition-all">
+                            <div class="w-12 h-12 rounded-2xl bg-winxPurple/40 text-white flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-xs text-purple-200 font-medium">อีเมล</p>
+                                <p class="font-bold text-white text-xs sm:text-sm truncate" title="xinyanaiksanahuyam@gmail.com">
+                                    xinyanaiksanahuyam@gmail.com
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Address Box -->
+                    <div class="bg-white/10 p-4 rounded-2xl border border-white/15 flex items-start gap-4 text-left hover:bg-white/15 transition-all">
+                        <div class="w-12 h-12 rounded-2xl bg-winxCyan/40 text-white flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-cyan-200 font-medium">ที่อยู่ปัจจุบัน</p>
+                            <p class="font-medium text-white text-sm mt-0.5">
+                                56/8 หมู่ 3 ต.บ้านหลวง อ.ดอนตูม จ.นครปฐม รหัสไปรษณีย์ 73150
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Magic Button -->
+                    <div class="pt-2">
+                        <button onclick="copyEmail()" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-winxPink via-purple-500 to-winxCyan text-white font-bold font-itim tracking-wider text-lg shadow-xl hover:shadow-pink-500/50 hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 mx-auto">
+                            <i class="fa-solid fa-copy"></i> คัดลอกอีเมลสำหรับติดต่อ
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 text-center text-xs text-slate-300 py-6 border-t border-white/10 relative z-10">
+        <p>© 2026 Aiksana Mueamyaem. Designed with <i class="fa-solid fa-heart text-winxPink mx-0.5"></i> Winx Magical Style.</p>
+        <p class="mt-1.5 text-[11px] text-slate-400">Ready for GitHub Pages deployment (index.html)</p>
+    </footer>
+
+    <!-- Notification Toast Popup -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-purple-900/95 border-2 border-winxPink text-white px-6 py-3.5 rounded-2xl shadow-2xl transition-all duration-300 opacity-0 translate-y-10 pointer-events-none z-50 flex items-center gap-3 backdrop-blur-md">
+        <i class="fa-solid fa-wand-magic-sparkles text-winxYellow text-xl"></i>
+        <span id="toastMsg" class="font-medium text-sm">ข้อความแจ้งเตือน</span>
+    </div>
+
+    <script>
+        // Mobile Navigation Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close Mobile Menu on Link Click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Copy Email Function using standard execCommand for iframe compatibility
+        function copyEmail() {
+            const email = "xinyanaiksanahuyam@gmail.com";
+            
+            const tempInput = document.createElement("input");
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast("คัดลอกอีเมลเรียบร้อยแล้วค่ะ! ✨");
+        }
+
+        // Show Toast Notification Logic
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            
+            toastMsg.innerText = message;
+            toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
